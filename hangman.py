@@ -1,13 +1,24 @@
 import random
 
 def hangman():
-    words = ["apple", "banana", "grape", "orange", "peach"]
-    word = random.choice(words)
+    word_categories = {
+        "apple": "Fruit",
+        "banana": "Fruit",
+        "grape": "Fruit",
+        "orange": "Fruit",
+        "peach": "Fruit"
+        # बाद में vegetable, animal आदि भी जोड़ सकते हो
+    }
+
+    word = random.choice(list(word_categories.keys()))
+    category = word_categories[word]
+
     guessed = ['_'] * len(word)
     attempts = 6
     guessed_letters = []
 
     print("🎮 Welcome to Hangman Game!")
+    print(f"Hint: The word is a type of **{category}**.")
     print("Guess the word, one letter at a time. You have 6 chances.\n")
 
     while attempts > 0 and '_' in guessed:
@@ -24,15 +35,16 @@ def hangman():
             for i in range(len(word)):
                 if word[i] == guess:
                     guessed[i] = guess
-            print(" Good guess!\n")
+            print("✅ Good guess!\n")
         else:
             attempts -= 1
-            print(f" Wrong guess. Attempts left: {attempts}\n")
+            print(f"❌ Wrong guess. Attempts left: {attempts}\n")
 
     if '_' not in guessed:
-        print("\n Congratulations! You guessed the word:", word)
+        print("\n🎉 Congratulations! You guessed the word:", word)
     else:
-        print("\n Game over! The word was:", word)
+        print("\n😢 Game over! The word was:", word)
 
 if __name__ == "__main__":
     hangman()
+

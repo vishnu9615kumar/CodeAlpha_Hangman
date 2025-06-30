@@ -7,7 +7,7 @@ def hangman():
         "grape": "Fruit",
         "orange": "Fruit",
         "peach": "Fruit"
-        # बाद में vegetable, animal आदि भी जोड़ सकते हो
+        
     }
 
     word = random.choice(list(word_categories.keys()))
